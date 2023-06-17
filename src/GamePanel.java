@@ -20,6 +20,7 @@ public class GamePanel extends JPanel implements Runnable {
     Paddle player2;
     Ball ball;
     Score score;
+    state p1,p2; //enum to store the state of keyboard
     GamePanel(){
         //here initial components are instantiated
         this.setPreferredSize(SCREEN_SIZE);
@@ -131,12 +132,32 @@ public class GamePanel extends JPanel implements Runnable {
     private class AL extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e){
+            if(e.getKeyCode()==KeyEvent.VK_W)
+                p1=state.UP;
+            if(e.getKeyCode()==KeyEvent.VK_S)
+                p1=state.DOWN;
+            if(e.getKeyCode()==KeyEvent.VK_UP)
+                p2=state.UP;
+            if(e.getKeyCode()==KeyEvent.VK_DOWN)
+                p2=state.DOWN;
+            player1.keyPressed(p1);
+            player2.keyPressed(p2);
+        }
+        @Override
+        public void keyReleased(KeyEvent e){
             if(e.getKeyCode()==KeyEvent.VK_W || e.getKeyCode()==KeyEvent.VK_S)
-                player1.keyPressed(e);
+                p1=state.NONE;
             if(e.getKeyCode()==KeyEvent.VK_UP || e.getKeyCode()==KeyEvent.VK_DOWN)
-                player2.keyPressed(e);
+                p2=state.NONE;
+
         }
 
+
+    }
+    enum state{
+        UP,
+        DOWN,
+        NONE;
 
     }
 

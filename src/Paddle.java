@@ -9,12 +9,12 @@ public class Paddle extends Rectangle{
         super(xLocation,yLocation,PADDLE_WIDTH,PADDLE_HEIGHT);
         this.playerNum=playerNum;
     }
-    public void keyPressed(KeyEvent e){
+    public void keyPressed(GamePanel.state state){
         //this function is called by the GamePanel from Action Listener when a key is pressed
-        if((e.getKeyCode()==KeyEvent.VK_W || e.getKeyCode()==KeyEvent.VK_UP) && y>=0)
+        if(state==GamePanel.state.UP && y>=0)
             y-=yVelocity;
 
-        if((e.getKeyCode()==KeyEvent.VK_S || e.getKeyCode()==KeyEvent.VK_DOWN) && y+getHeight()<=GamePanel.PANEL_HEIGHT)
+        if(state==GamePanel.state.DOWN && y+getHeight()<=GamePanel.PANEL_HEIGHT)
             y+=yVelocity;
 
     }
