@@ -4,28 +4,21 @@ import java.awt.event.KeyEvent;
 public class Paddle extends Rectangle{
 
     int playerNum;
-    int yVelocity; //speed of how fast you are moving up and down
-
+    int yVelocity=20; //speed of how fast you are moving up and down
     Paddle(int xLocation,int yLocation,int playerNum,int PADDLE_WIDTH,int PADDLE_HEIGHT){
         super(xLocation,yLocation,PADDLE_WIDTH,PADDLE_HEIGHT);
         this.playerNum=playerNum;
     }
     public void keyPressed(KeyEvent e){
         //this function is called by the GamePanel from Action Listener when a key is pressed
-    }
-    public void keyReleased(KeyEvent e)
-    {
-        //this function is called by the GamePanel from Action Listener when a key is released
+        if((e.getKeyCode()==KeyEvent.VK_W || e.getKeyCode()==KeyEvent.VK_UP) && y>=0)
+            y-=yVelocity;
+
+        if((e.getKeyCode()==KeyEvent.VK_S || e.getKeyCode()==KeyEvent.VK_DOWN) && y+getHeight()<=GamePanel.PANEL_HEIGHT)
+            y+=yVelocity;
 
     }
-    public void setYDirection(int y)
-    {
 
-    }
-    public void move()
-    {
-        //responsible for moving the paddle to the new y location
-    }
     public void draw(Graphics g)
     {
         //responsible for drawing the Paddle and to be called by the draw function in the GamePanel

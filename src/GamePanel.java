@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
     }
     public void newBall(){
         //whenever newBall is called a new ball will be created on the screen
-        ball=new Ball();
+        ball=new Ball(BALL_DIAMETER);
     }
     public void newPaddels(){
         //whenever we want to reset the paddels or the game
@@ -58,18 +58,36 @@ public class GamePanel extends JPanel implements Runnable {
     public void draw(Graphics g)
     {
         //to be used for paint and repaint
+
         player1.draw(g);
         player2.draw(g);
+        score.draw(g);
+        ball.draw(g);
+
 
 
     }
     public void move()
     {
-        //to be called each iteration to move the Paddels and ball
-
+        //to be called each iteration to move the ball
+        ball.move();
     }
     public void checkCollisions(){
         //checks if a collision happen between ball and a wall or paddle
+        if(ball.intersects(player1)) {ball.setXDirection(1);}
+        if(ball.intersects(player2)) {ball.setXDirection(-1);}
+        if(ball.x<0) {
+            score.player1Score+=1;
+            newBall();
+            newPaddels();
+        }
+        if(ball.x>PANEL_WIDTH) {
+            score.player2Score+=1;
+            newBall();
+            newPaddels();
+        }
+
+
     }
 
     @Override
@@ -91,32 +109,34 @@ public class GamePanel extends JPanel implements Runnable {
         * */
         long lastTime=System.nanoTime();
         double amountofTicks=60;
-        double ns=10e9/amountofTicks;
+        double ns=1000000000/amountofTicks;
         double delta=0;
         while(true)
         {
-            double currTime=System.nanoTime();
-            delta+=(currTime-lastTime)/amountofTicks;
+            long currTime=System.nanoTime();
+            delta+=(currTime-lastTime)/ns;
             if(delta>=1)
             {
-                move();
+
                 checkCollisions();
+                move();
                 repaint();
                 delta--;
+
             }
+            lastTime=currTime;
         }
     }
     //inner class acts as action listener for key pressed
     private class AL extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e){
-
+            if(e.getKeyCode()==KeyEvent.VK_W || e.getKeyCode()==KeyEvent.VK_S)
+                player1.keyPressed(e);
+            if(e.getKeyCode()==KeyEvent.VK_UP || e.getKeyCode()==KeyEvent.VK_DOWN)
+                player2.keyPressed(e);
         }
-        @Override
-        public void keyReleased(KeyEvent e)
-        {
 
-        }
 
     }
 

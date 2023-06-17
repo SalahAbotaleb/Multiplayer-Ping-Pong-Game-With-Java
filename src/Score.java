@@ -16,6 +16,10 @@ public class Score extends Rectangle {
 
     public void draw(Graphics g) {
         //responsible for drawing the score of the 2 players at the middle top of the screen and to be called by the draw function in the GamePanel
-
+        g.setColor(Color.white);
+        g.drawLine(GAME_WIDTH/2,0,GAME_WIDTH/2,GAME_HEIGHT);
+        g.setFont(new Font("Consolas",Font.PLAIN,60));
+        g.drawString(String.valueOf(player2Score/10)+String.valueOf(player2Score%10),(GAME_WIDTH/2)-85,50);
+        g.drawString(String.valueOf(player1Score/10)+String.valueOf(player1Score%10),(GAME_WIDTH/2)+20,50);
     }
 }
