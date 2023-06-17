@@ -1,6 +1,6 @@
 # Multithreaded Multiplayer Ping Pong Game with Java
 
-![Ping Pong Game](game_screenshot.png)
+![game_screenshot.png](https://github.com/SalahAbotaleb/Multiplayer-Ping-Pong-Game-With-Java/blob/main/image.png)
 
 This is a multithreaded multiplayer ping pong game implemented in Java. The game allows multiple players to compete against each other in a classic ping pong match.
 
