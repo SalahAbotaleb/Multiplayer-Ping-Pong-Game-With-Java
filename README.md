@@ -49,5 +49,5 @@ The game requires Java Development Kit (JDK) to be installed on your system to r
 
 ## Credits
 
-This game was created by [Salah Abotaleb](https://github.com/salah_abotaleb).
+This game was created by [Salah Abotaleb](https://github.com/SalahAbotaleb).
 
