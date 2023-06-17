@@ -1,11 +1,13 @@
 import java.awt.*;
 import java.util.*;
 import javax.swing.*;
-public class GameFrame extends JFrame implements Runnable{
+public class GameFrame extends JFrame {
 
 
-    @Override
-    public void run() {
-
+    GameFrame(){
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setLayeredPane(null);
     }
+
 }
