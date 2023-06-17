@@ -10,10 +10,10 @@ public class PongGame {
         * 1. adding a new thread
         * 2. initialize the panel size
         * 3. have the run method that infinitely runs till the close of the app
-        * 4. instantiate Paddel, Ball and Score objects
-        * 5. call appropriate functions from Paddel, Ball and Score objects upon occurrence of specific events
+        * 4. instantiate Paddle, Ball and Score objects
+        * 5. call appropriate functions from Paddle, Ball and Score objects upon occurrence of specific events
         *  */
-        new GameFrame();
+        GameFrame frame=new GameFrame();
     }
 
 }

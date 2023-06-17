@@ -2,6 +2,9 @@ import java.awt.*;
 import java.util.*;
 import javax.swing.*;
 public class Ball extends Rectangle{
+    Random random;
+    int xVelocity; //how fast on x-axis
+    int yVelocity; //how fast on y-axis
     Ball(){
 
     }
