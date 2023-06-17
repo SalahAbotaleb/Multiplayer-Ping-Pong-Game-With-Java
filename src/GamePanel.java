@@ -30,7 +30,10 @@ public class GamePanel extends JPanel implements Runnable {
         this.setFocusable(true); //to be able to be sensitive for keystrokes
         this.addKeyListener(new AL());
         gameRunningThread = new Thread(this); //multithreading
+        System.out.println(Thread.activeCount());
         gameRunningThread.start();
+        System.out.println(Thread.activeCount());
+
     }
     public void newBall(){
         //whenever newBall is called a new ball will be created on the screen

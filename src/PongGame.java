@@ -14,6 +14,7 @@ public class PongGame {
         * 5. call appropriate functions from Paddle, Ball and Score objects upon occurrence of specific events
         *  */
         GameFrame frame=new GameFrame();
+
     }
 
 }
